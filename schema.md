@@ -24,6 +24,16 @@ Réponse Piège -> je place quantité dans la table COMMANDES_DETAIL.
 
 CLIENTS(**id**, nom, ?prenom, ?telephone)
 
-COMMANDES(**id**, date, ?idClient)
+COMMANDES(**id**, date, ?#idClient)
 
 Réponse Piège -> Non ma clé étrangère ne peux pas être NOT NULL car il se peux qu'il y a des clients de passages -> NULL. Pour ne pas perdre aucune commande il faut la jointure LEFT JOIN.
+
+### Étape 5: Serveurs et tables
+
+SERVEURS (**id**, nom, prenom)
+
+TABLES (**id**, numero)
+
+COMMANDES(**id**, date, ?#idClient#idClient, ?#idServeur#idServeur, ?#idTable#idTable)
+
+Réponse Piège -> Une table de la salle et une commande sont deux choses différentes car pour les plat à emporter il n'y a pas de table. Le nom table pose problème en SQL car ça peux créer une ambiguité au moment de créer une table.
