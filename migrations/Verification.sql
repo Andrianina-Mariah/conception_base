@@ -6,3 +6,6 @@ SELECT categories.libelle, COUNT(plats.nom) FROM categories LEFT JOIN plats ON c
 
 -- Etape_03: montant total de chaque commande.
 SELECT commandes.id, SUM(plats.prix * commandes_detail.quantite) FROM commandes_detail LEFT JOIN commandes ON commandes.id = commandes_detail.idCommande LEFT JOIN plats ON commandes_detail.idPLat = plats.id GROUP BY commandes.id;
+
+-- Etape_04: liste des commandes avec le nom du client, en affichant « client de passage » quand il n'y en a pas.
+SELECT commandes.id, commandes.date, commandes_detail.idPlat, commandes_detail.quantite, COALESCE(clients.nom, 'client de passage') AS client FROM commandes LEFT JOIN commandes_detail ON commandes.id = commandes_detail.idCommande LEFT JOIN clients ON commandes.idClient = clients.id;

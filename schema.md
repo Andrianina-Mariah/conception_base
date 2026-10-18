@@ -16,8 +16,14 @@ Réponse Piège -> On n'ajoute pas simplement une colonne categorie VARCHAR(50) 
 
 COMMANDES(**id**, date)
 
-COMMANDES_DETAIL(**id**, #idCommande#idCommande, #idPlat#idPlat, quantite)
+COMMANDES_DETAIL(**id**, **#idCommande, #**idPlat**, quantite)**
 
 Réponse Piège -> je place quantité dans la table COMMANDES_DETAIL.
 
 ### Étape 4: Les habitués
+
+CLIENTS(**id**, nom, ?prenom, ?telephone)
+
+COMMANDES(**id**, date, ?idClient)
+
+Réponse Piège -> Non ma clé étrangère ne peux pas être NOT NULL car il se peux qu'il y a des clients de passages -> NULL. Pour ne pas perdre aucune commande il faut la jointure LEFT JOIN.
