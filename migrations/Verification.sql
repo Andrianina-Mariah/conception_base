@@ -29,3 +29,6 @@ LEFT JOIN (
     GROUP BY idCommande
 ) p ON commandes.id = p.idCommande
 GROUP BY commandes.id, p.total_paye;
+
+-- Etape_07
+SELECT commandes.id, SUM(commandes_detail.prix_unitaire * commandes_detail.quantite) FROM commandes_detail LEFT JOIN commandes ON commandes.id = commandes_detail.idCommande LEFT JOIN plats ON commandes_detail.idPLat = plats.id GROUP BY commandes.id;

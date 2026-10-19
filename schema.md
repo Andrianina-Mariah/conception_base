@@ -44,8 +44,14 @@ MODE_PAIEMENT(**id**, libelle)
 
 PAIEMENT(id, #idModePaiement#idModePaiement, #idCommande#idCommande, montant, ?reference)
 
-Réponse Piège -> Une colonne montant_paye dans la table des commandes ne suffit pas car un(e) client(e) peux payée plusieurs fois et de différentes manière. Pour le mode de paiement : j'utilise la table de référence. 
+Réponse Piège -> Une colonne montant_paye dans la table des commandes ne suffit pas car un(e) client(e) peux payée plusieurs fois et de différentes manière. Pour le mode de paiement : j'utilise la table de référence.
 
 CHECK : les valeurs autorisées sont écrites directement dans la table.
 
 Table de référence : les valeurs autorisées sont stockées dans une autre table et reliées par une clé étrangère.
+
+### Étape 7 : Les prix changent
+
+COMMANDES_DETAIL(**id**, **#idCommande, #**idPlat**, **quantite, #prix_unitaire**)**
+
+HISTORIQUES_PRIX(id, #idPlat, nouveauPrix, dateModif)
