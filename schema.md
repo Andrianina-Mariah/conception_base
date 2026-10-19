@@ -63,3 +63,12 @@ INGREDIENTS(**id**, ingredient, unite, stock)
 INGRDIENTS_PLAT(**id**, #idIngredient#idIngredient, #idPlat#idPlat, quantite)
 
 Réponse Piège -> la colonne ingredients VARCHAR(500) contenant « riz, zébu, brèdes » n'est pas conseillé car on n'aurait pas la posologie exacte de chaque plat.
+
+### Étape 9: Les menus du jour
+
+Parce qu'un menu est considéré comme un plat. On peut donc l'enregistrer dans la table plats, avec son propre prix, puis utiliser la table composition_menu pour indiquer les plats qui le composent.
+
+Cela évite de gérer les commandes de menus et les commandes de plats séparément.
+La contrainte CHECK 
+
+Elle vérifie que l'identifiant du menu est différent de celui du plat qu'il contient. Ainsi, le menu ne peut pas être directement son propre composant.

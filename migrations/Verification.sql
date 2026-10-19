@@ -43,3 +43,15 @@ JOIN ingredients_plat
     ON ingredients_plat.idPlat = commandes_detail.idPlat
 WHERE commandes_detail.idPlat = 1
 GROUP BY ingredients_plat.idIngredient;
+
+-- Etape_09: pour chaque menu, son prix, la somme des prix à la carte et l'économie réalisée par le client
+SELECT
+    m.id AS id_menu,
+    m.nom AS menu,
+    m.prix AS prix_menu,
+    SUM(p.prix) AS prix_a_la_carte,
+    SUM(p.prix) - m.prix AS economie
+FROM composition_menu cm
+JOIN plats m ON m.id = cm.idMenu
+JOIN plats p ON p.id = cm.idPlat
+GROUP BY m.id, m.nom, m.prix;
