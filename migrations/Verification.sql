@@ -32,3 +32,14 @@ GROUP BY commandes.id, p.total_paye;
 
 -- Etape_07
 SELECT commandes.id, SUM(commandes_detail.prix_unitaire * commandes_detail.quantite) FROM commandes_detail LEFT JOIN commandes ON commandes.id = commandes_detail.idCommande LEFT JOIN plats ON commandes_detail.idPLat = plats.id GROUP BY commandes.id;
+
+-- Etape_08: consommation théorique de chaque ingrédient pour la journée du 12 octobre.
+SELECT
+    ingredients_plat.idIngredient,
+    SUM(commandes_detail.quantite * ingredients_plat.quantite)
+        AS consommation_theorique
+FROM commandes_detail
+JOIN ingredients_plat
+    ON ingredients_plat.idPlat = commandes_detail.idPlat
+WHERE commandes_detail.idPlat = 1
+GROUP BY ingredients_plat.idIngredient;

@@ -55,3 +55,11 @@ Table de référence : les valeurs autorisées sont stockées dans une autre tab
 COMMANDES_DETAIL(**id**, **#idCommande, #**idPlat**, **quantite, #prix_unitaire**)**
 
 HISTORIQUES_PRIX(id, #idPlat, nouveauPrix, dateModif)
+
+### Étape 8 : Les ingrédients
+
+INGREDIENTS(**id**, ingredient, unite, stock)
+
+INGRDIENTS_PLAT(**id**, #idIngredient#idIngredient, #idPlat#idPlat, quantite)
+
+Réponse Piège -> la colonne ingredients VARCHAR(500) contenant « riz, zébu, brèdes » n'est pas conseillé car on n'aurait pas la posologie exacte de chaque plat.
